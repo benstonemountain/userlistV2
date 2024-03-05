@@ -1,20 +1,18 @@
-import { Injectable } from '@angular/core';
+import { EventEmitter, Injectable } from '@angular/core';
 import { User } from '../model/user.interface';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
-
 export class UserService {
-
-   users: User[] = [
+  users: User[] = [
     {
       id: 's15734',
       name: 'Piszkos Fred',
       age: 50,
       isLoggedIn: true,
     },
-  
+
     {
       id: 's34789',
       name: 'Fülig Jimy',
@@ -45,7 +43,14 @@ export class UserService {
       age: 42,
       isLoggedIn: false,
     },
-   ]
+  ];
 
-  constructor() { }
+  OnUserDetailsClicked: EventEmitter<User> = new EventEmitter<User>();
+
+  constructor() {}
+
+  getSelectedUser(userId: string) {
+    const user = this.users.find(item => userId === item.id);
+    this.OnUserDetailsClicked.emit(user);
+  }
 }
