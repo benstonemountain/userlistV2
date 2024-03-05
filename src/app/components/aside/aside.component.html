@@ -1,0 +1,12 @@
+<div class="aside-wrap">
+  <div class="search-wrap">
+    <input type="text" id="search" placeholder=" " [(ngModel)]="textByUser" (input)="onSearch()"  />
+  </div>
+
+  <div class="identifiers" *ngFor="let item of filteredUsers; let i = index">
+    <label>
+      <input type="checkbox" />
+      {{ item.id }}
+    </label>
+  </div>
+</div>

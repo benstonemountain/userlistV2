@@ -1,0 +1,14 @@
+.aside-wrap {
+    margin-top: 5px;
+}
+
+img {
+    width: 22px;
+}
+
+::placeholder {
+
+    background: url('../../../assets/pics/search_icon.svg');
+    background-size: 16px; 
+    background-repeat: no-repeat;
+  }
