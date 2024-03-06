@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component } from '@angular/core';
 import { UserService } from '../../services/user.service';
 import { User } from '../../model/user.interface';
 
@@ -12,6 +12,10 @@ export class AsideComponent {
   filteredUsers: User[] = [];
   textByUser = '';
   selectedUserId: string | null = null;
+  selectAll: boolean = false;
+  selectedUsers: User [] = [];
+
+
 
   constructor(private userService: UserService) {
     this.users = this.userService.users;
@@ -31,12 +35,23 @@ export class AsideComponent {
     } 
   }
 
+  selectAllCheckboxes() {
+       this.selectAll = !this.selectAll;
+
+  }
+
   onUserIdSelect(userId: string) {
     this.selectedUserId = this.selectedUserId === userId ? null : userId;
     console.log(this.selectedUserId);
-    if (this.selectedUserId) {
-     this.userService.getSelectedUser(this.selectedUserId);
-    }
+
+
+
+
+
+    // if (this.selectedUserId) {
+    //  this.userService.getSelectedUser(this.selectedUserId);
+    // }
+    
   }
 
 

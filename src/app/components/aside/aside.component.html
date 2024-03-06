@@ -3,10 +3,16 @@
     <input type="text" id="search" placeholder=" " [(ngModel)]="textByUser" (input)="onSearch()"  />
   </div>
 
+  <button class="select-all-button" (click)="selectAllCheckboxes()">
+{{selectAll ? "Kijelölés visszavonása" : "Összes kijelölés"}}
+  </button>
+
   <div class="identifiers" *ngFor="let item of filteredUsers; let i = index">
     <label>
       <input type="checkbox"
       (change)="onUserIdSelect(item.id)"
+      [checked]="selectAll"
+  
      />
       {{ item.id }}
     </label>
