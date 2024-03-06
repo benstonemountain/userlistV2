@@ -5,7 +5,7 @@ import { User } from '../model/user.interface';
   providedIn: 'root',
 })
 export class UserService {
-  users: User[] = [
+  users: User[]  = [
     {
       id: 's15734',
       name: 'Piszkos Fred',

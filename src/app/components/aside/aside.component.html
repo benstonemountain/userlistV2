@@ -10,7 +10,7 @@
   <div class="identifiers" *ngFor="let item of filteredUsers; let i = index">
     <label>
       <input type="checkbox"
-      (change)="onUserIdSelect(item.id)"
+      (change)="onUserIdSelect($event, item)"
       [checked]="selectAll"
   
      />
