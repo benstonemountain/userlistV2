@@ -39,7 +39,5 @@ export class AsideComponent {
     }
   }
 
-  isDisabled(userId: string): boolean {
-    return this.selectedUserId !== null && this.selectedUserId !== userId;
-  }
+
 }
