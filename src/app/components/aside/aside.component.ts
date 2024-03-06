@@ -21,9 +21,14 @@ export class AsideComponent {
  
 
   onSearch() {
-    this.filteredUsers = this.users.filter((item) =>
-      item.id.toLowerCase().includes(this.textByUser.toLowerCase())
-    );
+   
+    if (this.textByUser.length >= 3) {
+      this.filteredUsers = this.users.filter((item) =>
+        item.id.toLowerCase().includes(this.textByUser.toLowerCase())
+      );
+    } else if (this.textByUser.length <= 2 && this.textByUser.length > 0) {
+      this.filteredUsers = this.users;
+    } 
   }
 
   onUserIdSelect(userId: string) {

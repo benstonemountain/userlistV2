@@ -12,6 +12,12 @@ export class UserService {
       age: 50,
       isLoggedIn: true,
     },
+    {
+      id: 's02145',
+      name: 'Bradley Tamás',
+      age: 43,
+      isLoggedIn: false,
+    },
 
     {
       id: 's34789',
@@ -43,6 +49,7 @@ export class UserService {
       age: 42,
       isLoggedIn: false,
     },
+
   ];
 
   OnUserDetailsClicked: EventEmitter<User> = new EventEmitter<User>();
