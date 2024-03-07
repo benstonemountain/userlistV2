@@ -8,14 +8,21 @@ import { UserService } from '../../services/user.service';
   styleUrl: './details.component.css',
 })
 export class DetailsComponent {
-  selectedUser!: User;
-  userService = inject(UserService);
+  selectedUsers: User[] = [];
+  isSingleSelection: boolean = false;
   objectArray: any = [];
   
+  userService = inject(UserService);
   ngOnInit() {
-    this.userService.OnUserDetailsClicked.subscribe((user: User) => {
-      this.selectedUser = user;
-      this.objectArray = Object.entries(this.selectedUser);
+    this.userService.OnUserDetailsClicked.subscribe(({ users, isSingle }) => {
+      this.selectedUsers = users;
+      this.isSingleSelection = isSingle;
+      if (isSingle) {
+        this.objectArray = Object.entries(this.selectedUsers[0]);
+      } else {
+        this.objectArray = []; 
+      }
     });
   }
-}
+  }
+

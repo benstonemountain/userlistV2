@@ -1,3 +1,16 @@
-<div class="details-wrap" *ngFor="let item of objectArray">
-     {{item[0]}}:  {{item[1]}}
-</div>
+
+<div *ngIf="isSingleSelection">
+     <h2>User Details</h2>
+     <div *ngFor="let item of objectArray">
+       <p>{{ item[0] }}: {{ item[1] }}</p>
+     </div>
+   </div>
+   
+   <!-- <div *ngIf="!isSingleSelection">
+     <h2>Selected Users</h2>
+     <ul>
+       <li *ngFor="let user of selectedUsers">
+         {{ user.name }} 
+       </li>
+     </ul>
+   </div> -->

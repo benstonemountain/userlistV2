@@ -52,12 +52,12 @@ export class UserService {
 
   ];
 
-  OnUserDetailsClicked: EventEmitter<User> = new EventEmitter<User>();
+  OnUserDetailsClicked: EventEmitter<{ users: User[], isSingle: boolean }> = new EventEmitter<{ users: User[], isSingle: boolean }>();
+
 
   constructor() {}
 
-  getSelectedUser(userId: string) {
-    const user = this.users.find(item => userId === item.id);
-    this.OnUserDetailsClicked.emit(user);
+  getSelectedUser(users: User[], isSingle: boolean) {
+    this.OnUserDetailsClicked.emit({ users: users, isSingle: isSingle });
   }
 }

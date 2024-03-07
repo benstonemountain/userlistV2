@@ -14,6 +14,7 @@ export class AsideComponent {
   selectAll: boolean = false;
   selectedUser!: User | undefined;
   selectedUsers: User[] = [];
+  canRender = false;
 
   constructor(private userService: UserService) {
     this.users = this.userService.users;
@@ -32,23 +33,33 @@ export class AsideComponent {
 
   selectAllCheckboxes() {
     this.selectAll = !this.selectAll;
-    this.selectedUsers = this.users;
+    if (this.selectAll) {
+      this.selectedUsers = this.users;
+    } else {
+      this.selectedUsers = [];
+    }
     console.log(this.selectedUsers);
-    
   }
 
-  onUserIdSelect(event:any, user: User) {
-    console.log(event.target.checked);
-
-    if(event.target.checked) {
-        this.selectedUsers.push(user);
+  onUserSelect(event: any, user: User) {
+    if (event.target.checked) {
+      this.selectedUsers.push(user);
+      if (this.selectedUsers.length === 1) {
+        this.userService.getSelectedUser(this.selectedUsers, true);
+      } else {
+        this.userService.getSelectedUser(this.selectedUsers, false);
+      }
+      
+      // ha nincs bepipálva a checkbox
     } else {
-      this.selectedUsers = this.selectedUsers.filter(item => item.id !== user.id);
+      this.selectedUsers = this.selectedUsers.filter(
+        (item) => item.id !== user.id);
+
+      if (this.selectedUsers.length === 1) {
+        this.userService.getSelectedUser([this.selectedUsers[0]], true);
+      } else {
+        this.userService.getSelectedUser(this.selectedUsers, false);
+      }
     }
-    
-    console.log(this.selectedUsers);
-    
-
-
   }
 }
