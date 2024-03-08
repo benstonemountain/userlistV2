@@ -1,14 +1,41 @@
 .aside-wrap {
-    margin-top: 5px;
+  border: 1px solid rgb(198, 198, 198);
+  width: 40%;
+  height: calc(100% - 40px);
+  margin: 3px;
+  padding: 3px;
 }
 
 img {
-    width: 22px;
+  width: 22px;
 }
 
-::placeholder {
 
-    background: url('../../../assets/pics/search_icon.svg');
-    background-size: 16px; 
-    background-repeat: no-repeat;
-  }
+::placeholder {
+  background: url("../../../assets/pics/search_icon.svg");
+  background-size: 16px;
+  background-repeat: no-repeat;
+}
+
+.select-all-button {
+  width: 173.6px;
+  height: 20.8px;
+  margin: 15px 0;
+ 
+}
+
+.identifiers {
+  /* border: 1px solid black; */
+  width: 173.6px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  padding-left: 3px;
+}
+
+.identifiers:nth-child(odd) {
+  background-color: rgb(240, 237, 237);
+}
+.identifiers:nth-child(even) {
+  background-color: rgb(249, 246, 246);
+}

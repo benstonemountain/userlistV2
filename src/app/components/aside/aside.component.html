@@ -1,10 +1,10 @@
 <div class="aside-wrap">
   <div class="search-wrap">
-    <input type="text" id="search" placeholder=" " [(ngModel)]="textByUser" (input)="onSearch()"  />
+    <input type="text" id="search-field" placeholder=" " [(ngModel)]="textByUser" (input)="onSearch()"  />
   </div>
 
   <button class="select-all-button" (click)="selectAllCheckboxes()">
-{{selectAll ? "Kijelölés visszavonása" : "Összes kijelölés"}}
+{{selectAll ? "Kijelölés visszavonása" : "Összes kijelölése"}}
   </button>
 
   <div class="identifiers" *ngFor="let item of filteredUsers; let i = index">
