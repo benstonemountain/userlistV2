@@ -1,12 +1,16 @@
+<div class="description">
+  <div>Adat</div>
+  <div>Küldendő</div>
+</div>
 
-<div *ngIf="isSingleSelection">
-     <h2>User Details</h2>
-     <div *ngFor="let item of objectArray">
-       <p>{{ item[0] }}: {{ item[1] }}</p>
-     </div>
-   </div>
-   
-   <!-- <div *ngIf="!isSingleSelection">
+<!-- <div *ngIf="selectedUser" class="details-content">
+  <div *ngFor="let item of selectedUser" class="details-items">
+    <div class="key">{{ item[0] }}</div>
+    <div class="value">{{ item[1] }}</div>
+  </div>
+</div> -->
+
+<!-- <div *ngIf="!isSingleSelection">
      <h2>Selected Users</h2>
      <ul>
        <li *ngFor="let user of selectedUsers">

@@ -4,14 +4,14 @@
   </div>
 
   <button class="select-all-button" (click)="selectAllCheckboxes()">
-{{selectAll ? "Kijelölés visszavonása" : "Összes kijelölése"}}
+{{selectedUsers.size == users.length ? "Kijelölés visszavonása" : "Összes kijelölése"}}
   </button>
 
   <div class="identifiers" *ngFor="let item of filteredUsers; let i = index">
     <label>
       <input type="checkbox"
       (change)="onUserSelect($event, item)"
-      [checked]="selectAll"
+      [checked]="selectedUsers.has(item)"
   
      />
       {{ item.id }}

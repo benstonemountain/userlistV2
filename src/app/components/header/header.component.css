@@ -1,10 +1,11 @@
-.header-wrap {    
-    width: 100%;
+.header-wrap {
+
+    /* grid-column: 1 / 4; */
     height: 40px;
     display: flex;
     justify-content: center;
     align-items: center;
-    /* border: 1px solid rgb(198, 191, 191); */
-    box-shadow: 0px 1px 6px  rgba(0,0,0, .5);
-    }
-    
+
+    box-shadow: 0px 1px 6px rgba(0, 0, 0, .5);
+}
+

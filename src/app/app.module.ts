@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, ViewEncapsulation } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -8,6 +8,8 @@ import { HeaderComponent } from './components/header/header.component';
 import { AsideComponent } from './components/aside/aside.component';
 import { FormsModule } from '@angular/forms';
 import { DetailsComponent } from './components/details/details.component';
+import { SymbolsComponent } from './components/symbols/symbols.component';
+
 
 @NgModule({
   declarations: [
@@ -15,7 +17,9 @@ import { DetailsComponent } from './components/details/details.component';
     HomeComponent,
     HeaderComponent,
     AsideComponent,
-    DetailsComponent
+    DetailsComponent,
+    SymbolsComponent,
+   
   ],
   imports: [
     BrowserModule,
@@ -23,6 +27,6 @@ import { DetailsComponent } from './components/details/details.component';
     FormsModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule { }

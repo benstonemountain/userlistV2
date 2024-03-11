@@ -1,6 +1,38 @@
 .home-wrap {
-    width: 680px;
+    width: 670px;
     height: 600px;
-
     box-shadow: 1px 2px 8px  rgba(0,0,0, .6);
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: repeat(10, 1fr);
+}
+
+
+app-header {
+    grid-column: 1 / 4;
+ }
+
+ app-aside {
+    grid-row: 2 / -1;
+ }
+
+ app-details {
+    grid-column: 2 / -1;
+    grid-row: 6 / 11;
+ }
+
+@media (min-width: 800px)  {
+    .home-wrap {
+        width: 768px;
+        height: 600px;
+    }
+}
+
+
+@media (min-width: 1350px)  {
+    .home-wrap {
+        width: 1200px;
+        height: 700px;
+        grid-template-columns: 25% 37% 38%;
+    }
 }
