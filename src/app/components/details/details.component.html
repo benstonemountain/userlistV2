@@ -3,18 +3,12 @@
   <div>Küldendő</div>
 </div>
 
-<!-- <div *ngIf="selectedUser" class="details-content">
-  <div *ngFor="let item of selectedUser" class="details-items">
-    <div class="key">{{ item[0] }}</div>
-    <div class="value">{{ item[1] }}</div>
+<div *ngIf="selectedUser" class="details-content">
+  <div *ngFor="let item of selectedUser | keyvalue" class="details-items">
+    <div class="key">{{ item.key }}</div>
+    <div class="value">{{ item.value }}</div>
   </div>
-</div> -->
+  
+</div>
 
-<!-- <div *ngIf="!isSingleSelection">
-     <h2>Selected Users</h2>
-     <ul>
-       <li *ngFor="let user of selectedUsers">
-         {{ user.name }} 
-       </li>
-     </ul>
-   </div> -->
+

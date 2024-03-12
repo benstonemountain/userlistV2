@@ -9,12 +9,13 @@ import { UserService } from '../../services/user.service';
 })
 export class DetailsComponent {
   selectedUser:  User | null = null;
-
-  
   userService = inject(UserService);
+
   ngOnInit() {
     this.userService.OnUserDetailsClicked.subscribe(( user) => {
+      
       this.selectedUser = user;
+      // console.log("választott user a detailsben:", this.selectedUser);
     });
   }
   }

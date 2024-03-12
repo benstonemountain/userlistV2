@@ -30,6 +30,7 @@ export class AsideComponent {
   }
 
   selectAllCheckboxes() {
+    this.userService.getSelectedUser(null);
     if (this.selectedUsers.size === this.users.length) {
       this.selectedUsers.clear();
     } else {
@@ -43,6 +44,15 @@ export class AsideComponent {
     } else {
       this.selectedUsers.delete(user);
     }
-    console.log(this.selectedUsers);
+
+    if (this.selectedUsers.size === 1) {
+      //firstElement: a set első elemét adja vissza
+      const firstElement = Array.from(this.selectedUsers)[0];
+      this.userService.getSelectedUser(firstElement);
+    } else {
+      this.userService.getSelectedUser(null);
+    }
   }
+
+
 }
