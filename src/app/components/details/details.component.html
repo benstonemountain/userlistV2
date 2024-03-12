@@ -3,12 +3,9 @@
   <div>Küldendő</div>
 </div>
 
-<div *ngIf="selectedUser" class="details-content">
+<div *ngIf="selectedUser">
   <div *ngFor="let item of selectedUser | keyvalue" class="details-items">
-    <div class="key">{{ item.key }}</div>
-    <div class="value">{{ item.value }}</div>
+    <div class="detail-key">{{ item.key }}</div>
+    <div class="detail-value">{{ item.value }}</div>
   </div>
-  
 </div>
-
-

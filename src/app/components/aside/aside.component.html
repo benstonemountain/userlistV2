@@ -7,12 +7,11 @@
 {{selectedUsers.size == users.length ? "Kijelölés visszavonása" : "Összes kijelölése"}}
   </button>
 
-  <div class="identifiers" *ngFor="let item of filteredUsers; let i = index">
+  <div class="identifiers" *ngFor="let item of filteredUsers">
     <label>
       <input type="checkbox"
       (change)="onUserSelect($event, item)"
       [checked]="selectedUsers.has(item)"
-  
      />
       {{ item.id }}
     </label>

@@ -6,6 +6,7 @@ import { User } from '../model/user.interface';
 })
 export class UserService {
   users: User[]  = [
+   
     {
       id: 's15734',
       name: 'Piszkos Fred',
@@ -49,6 +50,7 @@ export class UserService {
       age: 42,
       isLoggedIn: false,
     },
+
 
   ];
 

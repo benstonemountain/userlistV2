@@ -11,7 +11,6 @@ export class AsideComponent {
   users: User[] = [];
   filteredUsers: User[] | undefined = [];
   textByUser = '';
-
   selectedUsers: Set<User> = new Set();
 
   constructor(private userService: UserService) {
@@ -54,5 +53,7 @@ export class AsideComponent {
     }
   }
 
-
+  // ngDoCheck() {
+  //   console.log(this.selectedUsers);
+  // }
 }

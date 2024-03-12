@@ -2,7 +2,9 @@
   border-right: 1px solid rgb(226, 226, 226);
   height: calc(100% - 40px);
   margin: 3px;
+  margin-right: 0;
   padding: 3px;
+  overflow-y: auto;
 }
 
 img {
@@ -39,21 +41,27 @@ img {
   display: flex;
   align-items: center;
   padding-left: 3px;
+  margin-bottom: 3px;
 }
 
 .identifiers:nth-child(odd) {
-  background-color: rgb(240, 237, 237);
+  background-color: rgb(233, 226, 159);
 }
 
 .identifiers:nth-child(even) {
-  background-color: rgb(249, 246, 246);
+  background-color: rgb(240, 231, 190);
+  
 }
 
 
   @media (min-width: 1350px) {
 
+    /* .aside-wrap {
+      width: 80%;
+    } */
+
   .search-wrap {
-    width: 230px;
+    width: 200px;
   }
 
   .search-wrap input {
@@ -62,7 +70,7 @@ img {
   }
 
   .select-all-button {
-    width: 230px;
+    width: 200px;
     height: 25px;  
   }
 } 
