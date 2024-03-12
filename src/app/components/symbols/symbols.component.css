@@ -1,4 +1,56 @@
-.symbols-content {
-    border: 1px solid blue;
+.symbols-wrap {
+  /* border: 1px solid blue; */
+  width: 100%;
+  height: 90%;
+  box-shadow: 0 4px 2px -2px rgba(0, 0, 0, 0.2);
+}
 
+.inputs {
+  /* border: 1px solid red; */
+  width: 400px;
+  height: 40%;
+  margin: 0 auto 5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+#select-ssi-type,
+#symbol-search-field {
+  display: block;
+  width: 170px;
+  height: 25px;
+}
+
+::placeholder {
+  background: url("../../../assets/pics/search_icon.svg");
+  background-size: 16px;
+  background-repeat: no-repeat;
+}
+
+/* ALSÓ */
+
+.symbols {
+    /* border: 3px solid green; */
+    width: 100%;
+    height: 60%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* MEDIA */
+
+@media (min-width: 800px) {
+}
+
+@media (min-width: 1350px) {
+  .inputs {
+    width: 500px;
+  }
+  .ssi-type,
+  .ssi-symbol {
+    width: 200px;
+  }
 }

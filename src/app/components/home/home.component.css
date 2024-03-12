@@ -10,7 +10,7 @@
 
 
 app-header {
-    grid-column: 1 / 4;
+    grid-column: 1 / -1;
  
  }
 
@@ -18,9 +18,14 @@ app-header {
     grid-row: 2 / -1;
  }
 
+ app-symbols {
+    grid-column: 2 / -1;
+    grid-row: 2 / 6;
+ }
+
  app-details {
     grid-column: 2 / -1;
-    grid-row: 6 / 11;
+    grid-row: 6 / -1;
  }
 
 @media (min-width: 800px)  {
@@ -31,7 +36,7 @@ app-header {
 }
 
 
-@media (min-width: 1350px)  {
+@media (min-width: 1250px)  {
     .home-wrap {
         width: 1200px;
         height: 700px;
