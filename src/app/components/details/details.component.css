@@ -1,3 +1,18 @@
+.details-wrap {
+  width: 100%;
+  height: 100%;
+  /* border: 1px solid black; */
+  position: relative;
+}
+
+img {
+  position: absolute;
+  width: 50px;
+  opacity: 0.2;
+  right: 10px;
+  bottom: 10px;
+}
+
 .description, .details-items {
     border-bottom: 2px solid rgb(162, 146, 6);
     width: 350px;
@@ -10,6 +25,7 @@
     font-size: 1.2rem;
     font-weight: bold;
     background-color: rgb(174, 159, 23);
+    background-color: rgb(167, 157, 68);
 }
 
 .description > div:nth-child(1) {

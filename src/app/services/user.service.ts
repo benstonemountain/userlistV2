@@ -1,12 +1,13 @@
 import { EventEmitter, Injectable } from '@angular/core';
 import { User } from '../model/user.interface';
+import { Observable, Subject } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root',
 })
 export class UserService {
-  users: User[]  = [
-   
+  users: User[] = [
     {
       id: 's15734',
       name: 'Piszkos Fred',
@@ -50,14 +51,30 @@ export class UserService {
       age: 42,
       isLoggedIn: false,
     },
-
-
   ];
 
-  OnUserDetailsClicked: EventEmitter<User | null> = new EventEmitter<User | null>();
+  OnUserDetailsClicked: EventEmitter<User | null> =
+    new EventEmitter<User | null>();
 
+  private dataArrived = new Subject<User[]>();
+  private APIurl = '';
 
-  constructor() {}
+  constructor(private httpClient: HttpClient) {}
+
+  getRequest() {
+    this.httpClient.get<User[]>(this.APIurl).subscribe({
+      next: (item) => {
+        this.dataArrived.next(item);
+      },
+      error: (err) => {
+        console.log(err);
+      },
+    });
+  }
+
+  getAllUser(): Observable<User[]> {
+    return this.dataArrived.asObservable();
+  }
 
   getSelectedUser(user: User | null) {
     this.OnUserDetailsClicked.emit(user);

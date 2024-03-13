@@ -9,6 +9,7 @@ import { User } from '../../model/user.interface';
 })
 export class AsideComponent {
   users: User[] = [];
+  
   filteredUsers: User[] | undefined = [];
   textByUser = '';
   selectedUsers: Set<User> = new Set();
@@ -17,6 +18,16 @@ export class AsideComponent {
     this.users = this.userService.users;
     this.filteredUsers = this.users;
   }
+
+  
+//   usersFromServer: User[] = [];
+//   ngOnInit() {
+// this.userService.getAllUser().subscribe(userArray => {
+//   this.usersFromServer = userArray;
+//   console.log(this.usersFromServer);
+  
+// })
+//   }
 
   onSearch() {
     if (this.textByUser.length >= 3) {
@@ -53,7 +64,7 @@ export class AsideComponent {
     }
   }
 
-  // ngDoCheck() {
-  //   console.log(this.selectedUsers);
-  // }
+
+
+
 }

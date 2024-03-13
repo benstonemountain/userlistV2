@@ -9,6 +9,7 @@ import { AsideComponent } from './components/aside/aside.component';
 import { FormsModule } from '@angular/forms';
 import { DetailsComponent } from './components/details/details.component';
 import { SymbolsComponent } from './components/symbols/symbols.component';
+import { HttpClientModule } from '@angular/common/http'; 
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { SymbolsComponent } from './components/symbols/symbols.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent],

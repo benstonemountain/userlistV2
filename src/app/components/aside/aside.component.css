@@ -31,6 +31,7 @@ img {
   height: 20.8px;
   display: block;
   margin: 15px auto;
+  border-radius: 4px;
   background-color: rgb(233, 226, 159);
   border: none;
   cursor: pointer;

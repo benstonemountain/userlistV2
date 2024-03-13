@@ -28,6 +28,8 @@ app-header {
     grid-row: 6 / -1;
  }
 
+
+
 @media (min-width: 800px)  {
     .home-wrap {
         width: 768px;
