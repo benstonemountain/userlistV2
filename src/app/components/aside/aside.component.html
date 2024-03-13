@@ -1,13 +1,23 @@
 <div class="aside-wrap">
   <div class="search-wrap">
-    <input type="text" id="search-field" placeholder=" " [(ngModel)]="textByUser" (input)="onSearch()"  />
-  </div>
+    <input
+      type="text"
+      id="search-field"
+      placeholder=" "
+      [(ngModel)]="textByUser"
+      />
+    </div>
+    <!-- (input)="onSearch()" -->
 
   <button class="select-all-button" (click)="selectAllCheckboxes()">
-{{selectedUsers.size == users.length ? "Kijelölés visszavonása" : "Összes kijelölése"}}
+    {{
+      selectedUsers.size == userIdStates.length
+        ? "Kijelölés visszavonása"
+        : "Összes kijelölése"
+    }}
   </button>
 
-  <div class="identifiers" *ngFor="let item of filteredUsers">
+  <!-- <div class="identifiers" *ngFor="let item of filteredUsers">
     <label>
       <input type="checkbox"
       (change)="onUserSelect($event, item)"
@@ -15,5 +25,20 @@
      />
       {{ item.id }}
     </label>
-  </div>
+  </div> -->
+
+
+    <div class="identifiers" *ngFor="let item of usersFromServer$ | async">
+      <label>
+        <input
+          type="checkbox"
+          (change)="onUserSelect($event, item)"
+          [checked]="selectedUsers.has(item)"
+        />
+        {{ item.SSI }}
+      </label>
+    </div>
+  
+
+
 </div>

@@ -1,6 +1,6 @@
 import { EventEmitter, Injectable } from '@angular/core';
-import { User } from '../model/user.interface';
-import { Observable, Subject } from 'rxjs';
+import { User, UserIdState } from '../model/user.interface';
+import { Observable, Subject, of } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable({
@@ -53,30 +53,51 @@ export class UserService {
     },
   ];
 
+  userIdStates: UserIdState[] = [
+    {
+      SSI: 's15734',
+      state: true,
+    },
+    {
+      SSI: 's367892',
+      state: false,
+    },
+  ];
+
   OnUserDetailsClicked: EventEmitter<User | null> =
     new EventEmitter<User | null>();
 
-  private dataArrived = new Subject<User[]>();
+  private dataArrived = new Subject<UserIdState[]>();
   private APIurl = '';
 
   constructor(private httpClient: HttpClient) {}
 
   getRequest() {
-    this.httpClient.get<User[]>(this.APIurl).subscribe({
-      next: (item) => {
-        this.dataArrived.next(item);
+    //a get egy olyan observable-t ad vissza, amit a generikusában megadok
+    // this.httpClient.get<UserIdState[]>(this.APIurl).subscribe({
+    //innen indul az observer (aminek van error, next és complete metódusa)
+
+    of(this.userIdStates).subscribe({
+      next: (userIdStates) => {
+        console.log(userIdStates);
+        this.dataArrived.next(userIdStates);
       },
       error: (err) => {
         console.log(err);
       },
+
+      complete: () => {
+        console.log('get request complete');
+      },
     });
+    //a httpClient egy futás után már hívja a complete-et!!! --> befejezi az adat kibocsátást --> nem reaktív
   }
 
-  getAllUser(): Observable<User[]> {
+  getAllUser(): Observable<UserIdState[]> {
     return this.dataArrived.asObservable();
   }
 
-  getSelectedUser(user: User | null) {
-    this.OnUserDetailsClicked.emit(user);
+  getSelectedUser(userID: string | null) {
+    this.OnUserDetailsClicked.emit(null);
   }
 }

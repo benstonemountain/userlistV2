@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { UserService } from '../../services/user.service';
-import { User } from '../../model/user.interface';
+import { User, UserIdState } from '../../model/user.interface';
+import { Observable, tap } from 'rxjs';
 
 @Component({
   selector: 'app-aside',
@@ -8,57 +9,53 @@ import { User } from '../../model/user.interface';
   styleUrl: './aside.component.css',
 })
 export class AsideComponent {
-  users: User[] = [];
+  userIdStates: UserIdState[] = [];
   
   filteredUsers: User[] | undefined = [];
   textByUser = '';
-  selectedUsers: Set<User> = new Set();
+  selectedUsers: Set<UserIdState> = new Set();
 
-  constructor(private userService: UserService) {
-    this.users = this.userService.users;
-    this.filteredUsers = this.users;
-  }
+  constructor(private userService: UserService) {}
 
   
-//   usersFromServer: User[] = [];
-//   ngOnInit() {
-// this.userService.getAllUser().subscribe(userArray => {
-//   this.usersFromServer = userArray;
-//   console.log(this.usersFromServer);
-  
-// })
-//   }
-
-  onSearch() {
-    if (this.textByUser.length >= 3) {
-      this.filteredUsers = this.users.filter((item) =>
-        item.id.toLowerCase().includes(this.textByUser.toLowerCase())
-      );
-    } else if (this.textByUser.length <= 2 && this.textByUser.length > 0) {
-      this.filteredUsers = this.users;
-    }
+  usersFromServer$!: Observable<UserIdState[]>;
+  ngOnInit() {
+    this.userService.getRequest();
+    this.usersFromServer$ = this.userService.getAllUser().pipe(tap(
+      console.log
+    ))
   }
+
+  // onSearch() {
+  //   if (this.textByUser.length >= 3) {
+  //     this.filteredUsers = this.userIdStates.filter((item) =>
+  //       item.id.toLowerCase().includes(this.textByUser.toLowerCase())
+  //     );
+  //   } else if (this.textByUser.length <= 2 && this.textByUser.length > 0) {
+  //     this.filteredUsers = this.userIdStates;
+  //   }
+  // }
 
   selectAllCheckboxes() {
     this.userService.getSelectedUser(null);
-    if (this.selectedUsers.size === this.users.length) {
+    if (this.selectedUsers.size === this.userIdStates.length) {
       this.selectedUsers.clear();
     } else {
-      this.users.forEach((item) => this.selectedUsers.add(item));
+      this.userIdStates.forEach((item) => this.selectedUsers.add(item));
     }
   }
 
-  onUserSelect(event: any, user: User) {
+  onUserSelect(event: any, userIdState: UserIdState) {
     if (event.target.checked) {
-      this.selectedUsers.add(user);
+      this.selectedUsers.add(userIdState);
     } else {
-      this.selectedUsers.delete(user);
+      this.selectedUsers.delete(userIdState);
     }
 
     if (this.selectedUsers.size === 1) {
       //firstElement: a set első elemét adja vissza
       const firstElement = Array.from(this.selectedUsers)[0];
-      this.userService.getSelectedUser(firstElement);
+      this.userService.getSelectedUser(userIdState.SSI);
     } else {
       this.userService.getSelectedUser(null);
     }

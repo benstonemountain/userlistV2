@@ -4,3 +4,8 @@ export interface User {
     age: number;
     isLoggedIn: boolean;
 }
+
+export interface UserIdState {
+    SSI: string;
+    state: boolean;
+}
